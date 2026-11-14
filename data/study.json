@@ -1,0 +1,634 @@
+{
+  "frame_version": "autumn-2026-r1",
+  "frame": [
+    {
+      "student": "s-000",
+      "class_id": "c-0",
+      "campus": "north",
+      "major": "rare",
+      "eligibility": false,
+      "survey_value": 0
+    },
+    {
+      "student": "s-001",
+      "class_id": "c-0",
+      "campus": "north",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 1
+    },
+    {
+      "student": "s-002",
+      "class_id": "c-0",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 2
+    },
+    {
+      "student": "s-003",
+      "class_id": "c-0",
+      "campus": "north",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 3
+    },
+    {
+      "student": "s-004",
+      "class_id": "c-0",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 4
+    },
+    {
+      "student": "s-005",
+      "class_id": "c-0",
+      "campus": "north",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 5
+    },
+    {
+      "student": "s-006",
+      "class_id": "c-0",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 6
+    },
+    {
+      "student": "s-007",
+      "class_id": "c-0",
+      "campus": "north",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 7
+    },
+    {
+      "student": "s-008",
+      "class_id": "c-0",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 8
+    },
+    {
+      "student": "s-009",
+      "class_id": "c-0",
+      "campus": "north",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 9
+    },
+    {
+      "student": "s-010",
+      "class_id": "c-0",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 10
+    },
+    {
+      "student": "s-011",
+      "class_id": "c-0",
+      "campus": "north",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 0
+    },
+    {
+      "student": "s-012",
+      "class_id": "c-1",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 1
+    },
+    {
+      "student": "s-013",
+      "class_id": "c-1",
+      "campus": "north",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 2
+    },
+    {
+      "student": "s-014",
+      "class_id": "c-1",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 3
+    },
+    {
+      "student": "s-015",
+      "class_id": "c-1",
+      "campus": "north",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 4
+    },
+    {
+      "student": "s-016",
+      "class_id": "c-1",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 5
+    },
+    {
+      "student": "s-017",
+      "class_id": "c-1",
+      "campus": "north",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 6
+    },
+    {
+      "student": "s-018",
+      "class_id": "c-1",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 7
+    },
+    {
+      "student": "s-019",
+      "class_id": "c-1",
+      "campus": "north",
+      "major": "rare",
+      "eligibility": true,
+      "survey_value": 8
+    },
+    {
+      "student": "s-020",
+      "class_id": "c-1",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 9
+    },
+    {
+      "student": "s-021",
+      "class_id": "c-1",
+      "campus": "north",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 10
+    },
+    {
+      "student": "s-022",
+      "class_id": "c-1",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 0
+    },
+    {
+      "student": "s-023",
+      "class_id": "c-1",
+      "campus": "north",
+      "major": "science",
+      "eligibility": false,
+      "survey_value": 1
+    },
+    {
+      "student": "s-024",
+      "class_id": "c-2",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 2
+    },
+    {
+      "student": "s-025",
+      "class_id": "c-2",
+      "campus": "north",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 3
+    },
+    {
+      "student": "s-026",
+      "class_id": "c-2",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 4
+    },
+    {
+      "student": "s-027",
+      "class_id": "c-2",
+      "campus": "north",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 5
+    },
+    {
+      "student": "s-028",
+      "class_id": "c-2",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 6
+    },
+    {
+      "student": "s-029",
+      "class_id": "c-2",
+      "campus": "north",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 7
+    },
+    {
+      "student": "s-030",
+      "class_id": "c-2",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 8
+    },
+    {
+      "student": "s-031",
+      "class_id": "c-2",
+      "campus": "north",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 9
+    },
+    {
+      "student": "s-032",
+      "class_id": "c-2",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 10
+    },
+    {
+      "student": "s-033",
+      "class_id": "c-2",
+      "campus": "north",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 0
+    },
+    {
+      "student": "s-034",
+      "class_id": "c-2",
+      "campus": "north",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 1
+    },
+    {
+      "student": "s-035",
+      "class_id": "c-2",
+      "campus": "north",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 2
+    },
+    {
+      "student": "s-036",
+      "class_id": "c-3",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 3
+    },
+    {
+      "student": "s-037",
+      "class_id": "c-3",
+      "campus": "south",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 4
+    },
+    {
+      "student": "s-038",
+      "class_id": "c-3",
+      "campus": "south",
+      "major": "rare",
+      "eligibility": true,
+      "survey_value": 5
+    },
+    {
+      "student": "s-039",
+      "class_id": "c-3",
+      "campus": "south",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 6
+    },
+    {
+      "student": "s-040",
+      "class_id": "c-3",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 7
+    },
+    {
+      "student": "s-041",
+      "class_id": "c-3",
+      "campus": "south",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 8
+    },
+    {
+      "student": "s-042",
+      "class_id": "c-3",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 9
+    },
+    {
+      "student": "s-043",
+      "class_id": "c-3",
+      "campus": "south",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 10
+    },
+    {
+      "student": "s-044",
+      "class_id": "c-3",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 0
+    },
+    {
+      "student": "s-045",
+      "class_id": "c-3",
+      "campus": "south",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 1
+    },
+    {
+      "student": "s-046",
+      "class_id": "c-3",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": false,
+      "survey_value": 2
+    },
+    {
+      "student": "s-047",
+      "class_id": "c-3",
+      "campus": "south",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 3
+    },
+    {
+      "student": "s-048",
+      "class_id": "c-4",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 4
+    },
+    {
+      "student": "s-049",
+      "class_id": "c-4",
+      "campus": "south",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 5
+    },
+    {
+      "student": "s-050",
+      "class_id": "c-4",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 6
+    },
+    {
+      "student": "s-051",
+      "class_id": "c-4",
+      "campus": "south",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 7
+    },
+    {
+      "student": "s-052",
+      "class_id": "c-4",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 8
+    },
+    {
+      "student": "s-053",
+      "class_id": "c-4",
+      "campus": "south",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 9
+    },
+    {
+      "student": "s-054",
+      "class_id": "c-4",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 10
+    },
+    {
+      "student": "s-055",
+      "class_id": "c-4",
+      "campus": "south",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 0
+    },
+    {
+      "student": "s-056",
+      "class_id": "c-4",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 1
+    },
+    {
+      "student": "s-057",
+      "class_id": "c-4",
+      "campus": "south",
+      "major": "rare",
+      "eligibility": true,
+      "survey_value": 2
+    },
+    {
+      "student": "s-058",
+      "class_id": "c-4",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 3
+    },
+    {
+      "student": "s-059",
+      "class_id": "c-4",
+      "campus": "south",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 4
+    },
+    {
+      "student": "s-060",
+      "class_id": "c-5",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 5
+    },
+    {
+      "student": "s-061",
+      "class_id": "c-5",
+      "campus": "south",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 6
+    },
+    {
+      "student": "s-062",
+      "class_id": "c-5",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 7
+    },
+    {
+      "student": "s-063",
+      "class_id": "c-5",
+      "campus": "south",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 8
+    },
+    {
+      "student": "s-064",
+      "class_id": "c-5",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 9
+    },
+    {
+      "student": "s-065",
+      "class_id": "c-5",
+      "campus": "south",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 10
+    },
+    {
+      "student": "s-066",
+      "class_id": "c-5",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 0
+    },
+    {
+      "student": "s-067",
+      "class_id": "c-5",
+      "campus": "south",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 1
+    },
+    {
+      "student": "s-068",
+      "class_id": "c-5",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 2
+    },
+    {
+      "student": "s-069",
+      "class_id": "c-5",
+      "campus": "south",
+      "major": "science",
+      "eligibility": false,
+      "survey_value": 3
+    },
+    {
+      "student": "s-070",
+      "class_id": "c-5",
+      "campus": "south",
+      "major": "engineering",
+      "eligibility": true,
+      "survey_value": 4
+    },
+    {
+      "student": "s-071",
+      "class_id": "c-5",
+      "campus": "south",
+      "major": "science",
+      "eligibility": true,
+      "survey_value": 5
+    }
+  ],
+  "clusters": [
+    {
+      "class_id": "c-0",
+      "campus": "north",
+      "visit_cost": 30,
+      "interview_minutes": 15
+    },
+    {
+      "class_id": "c-1",
+      "campus": "north",
+      "visit_cost": 32,
+      "interview_minutes": 15
+    },
+    {
+      "class_id": "c-2",
+      "campus": "north",
+      "visit_cost": 34,
+      "interview_minutes": 15
+    },
+    {
+      "class_id": "c-3",
+      "campus": "south",
+      "visit_cost": 36,
+      "interview_minutes": 15
+    },
+    {
+      "class_id": "c-4",
+      "campus": "south",
+      "visit_cost": 38,
+      "interview_minutes": 15
+    },
+    {
+      "class_id": "c-5",
+      "campus": "south",
+      "visit_cost": 40,
+      "interview_minutes": 15
+    }
+  ],
+  "dispositions": [
+    {
+      "student": "s-001",
+      "status": "refused"
+    },
+    {
+      "student": "s-002",
+      "status": "absent"
+    }
+  ],
+  "limits": {
+    "minutes": 300,
+    "minimum_rare_major": 2
+  },
+  "project_title": "多阶段访谈抽样与现场替补后的可用入样概率"
+}

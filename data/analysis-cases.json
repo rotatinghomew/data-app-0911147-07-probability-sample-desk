@@ -1,0 +1,255 @@
+[
+  {
+    "name": "enumerable_six",
+    "study": {
+      "frame_version": "autumn-2026-r1",
+      "frame": [
+        {
+          "student": "s-000",
+          "class_id": "c-0",
+          "campus": "north",
+          "major": "rare",
+          "eligibility": true,
+          "survey_value": 0
+        },
+        {
+          "student": "s-001",
+          "class_id": "c-0",
+          "campus": "north",
+          "major": "science",
+          "eligibility": true,
+          "survey_value": 1
+        },
+        {
+          "student": "s-002",
+          "class_id": "c-0",
+          "campus": "north",
+          "major": "rare",
+          "eligibility": true,
+          "survey_value": 2
+        },
+        {
+          "student": "s-003",
+          "class_id": "c-1",
+          "campus": "north",
+          "major": "science",
+          "eligibility": true,
+          "survey_value": 3
+        },
+        {
+          "student": "s-004",
+          "class_id": "c-1",
+          "campus": "north",
+          "major": "rare",
+          "eligibility": true,
+          "survey_value": 4
+        },
+        {
+          "student": "s-005",
+          "class_id": "c-1",
+          "campus": "north",
+          "major": "science",
+          "eligibility": true,
+          "survey_value": 5
+        }
+      ],
+      "clusters": [
+        {
+          "class_id": "c-0",
+          "campus": "north",
+          "visit_cost": 30,
+          "interview_minutes": 15
+        },
+        {
+          "class_id": "c-1",
+          "campus": "north",
+          "visit_cost": 32,
+          "interview_minutes": 15
+        }
+      ],
+      "dispositions": [],
+      "limits": {
+        "minutes": 300,
+        "minimum_rare_major": 2
+      }
+    },
+    "check": "可枚举全部抽样结果验证一阶二阶概率及方差"
+  },
+  {
+    "name": "impossible",
+    "study": {
+      "frame_version": "autumn-2026-r1",
+      "frame": [
+        {
+          "student": "s-000",
+          "class_id": "c-0",
+          "campus": "north",
+          "major": "rare",
+          "eligibility": true,
+          "survey_value": 0
+        },
+        {
+          "student": "s-001",
+          "class_id": "c-0",
+          "campus": "north",
+          "major": "science",
+          "eligibility": true,
+          "survey_value": 1
+        },
+        {
+          "student": "s-002",
+          "class_id": "c-0",
+          "campus": "north",
+          "major": "rare",
+          "eligibility": true,
+          "survey_value": 2
+        },
+        {
+          "student": "s-003",
+          "class_id": "c-1",
+          "campus": "north",
+          "major": "science",
+          "eligibility": true,
+          "survey_value": 3
+        },
+        {
+          "student": "s-004",
+          "class_id": "c-1",
+          "campus": "north",
+          "major": "rare",
+          "eligibility": true,
+          "survey_value": 4
+        },
+        {
+          "student": "s-005",
+          "class_id": "c-1",
+          "campus": "north",
+          "major": "science",
+          "eligibility": true,
+          "survey_value": 5
+        }
+      ],
+      "clusters": [
+        {
+          "class_id": "c-0",
+          "campus": "north",
+          "visit_cost": 30,
+          "interview_minutes": 15
+        },
+        {
+          "class_id": "c-1",
+          "campus": "north",
+          "visit_cost": 32,
+          "interview_minutes": 15
+        }
+      ],
+      "dispositions": [],
+      "limits": {
+        "minutes": 1,
+        "minimum_rare_major": 4
+      }
+    },
+    "check": "访问成本和专业覆盖均不可行时不能暗改设计"
+  },
+  {
+    "name": "all_refused",
+    "study": {
+      "frame_version": "autumn-2026-r1",
+      "frame": [
+        {
+          "student": "s-000",
+          "class_id": "c-0",
+          "campus": "north",
+          "major": "rare",
+          "eligibility": true,
+          "survey_value": 0
+        },
+        {
+          "student": "s-001",
+          "class_id": "c-0",
+          "campus": "north",
+          "major": "science",
+          "eligibility": true,
+          "survey_value": 1
+        },
+        {
+          "student": "s-002",
+          "class_id": "c-0",
+          "campus": "north",
+          "major": "rare",
+          "eligibility": true,
+          "survey_value": 2
+        },
+        {
+          "student": "s-003",
+          "class_id": "c-1",
+          "campus": "north",
+          "major": "science",
+          "eligibility": true,
+          "survey_value": 3
+        },
+        {
+          "student": "s-004",
+          "class_id": "c-1",
+          "campus": "north",
+          "major": "rare",
+          "eligibility": true,
+          "survey_value": 4
+        },
+        {
+          "student": "s-005",
+          "class_id": "c-1",
+          "campus": "north",
+          "major": "science",
+          "eligibility": true,
+          "survey_value": 5
+        }
+      ],
+      "clusters": [
+        {
+          "class_id": "c-0",
+          "campus": "north",
+          "visit_cost": 30,
+          "interview_minutes": 15
+        },
+        {
+          "class_id": "c-1",
+          "campus": "north",
+          "visit_cost": 32,
+          "interview_minutes": 15
+        }
+      ],
+      "dispositions": [
+        {
+          "student": "s-000",
+          "status": "refused"
+        },
+        {
+          "student": "s-001",
+          "status": "refused"
+        },
+        {
+          "student": "s-002",
+          "status": "refused"
+        },
+        {
+          "student": "s-003",
+          "status": "refused"
+        },
+        {
+          "student": "s-004",
+          "status": "refused"
+        },
+        {
+          "student": "s-005",
+          "status": "refused"
+        }
+      ],
+      "limits": {
+        "minutes": 300,
+        "minimum_rare_major": 2
+      }
+    },
+    "check": "无响应不能填成零值或宣称仍观察到总体均值"
+  }
+]
