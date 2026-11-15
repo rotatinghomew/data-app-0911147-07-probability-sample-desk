@@ -1,9 +1,35 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>多阶段访谈抽样与现场替补后的可用入样概率</title><link rel="stylesheet" href="/style.css"><script defer src="/app.js"></script></head>
-<body><header><h1>多阶段访谈抽样与现场替补后的可用入样概率</h1><p>冻结抽样框、简单随机抽签和现场回执计数</p></header><main>
+<body><header><h1>多阶段访谈抽样与现场替补后的可用入样概率</h1><p>约束下的可行设计、正式与备用名单、现场回执与沿原设计的估计追溯</p></header><main>
 <section><h2>当前资料概况</h2><pre id="summary">载入中</pre></section>
 <section><h2>业务记录</h2><label>记录集合<select id="source"></select></label><span id="record-count"></span><div id="records"></div></section>
+<section><h2>多阶段抽样工作台</h2><div class="steps">
+<section class="step"><h3>① 约束下的可行设计</h3>
+<form id="plan-form"><label>访谈工时预算（分钟）<input type="number" name="minutes" min="1" required></label>
+<label>稀少专业最低覆盖（人）<input type="number" name="minimum_rare_major" min="0" required></label>
+<button type="submit">生成可行设计</button></form>
+<pre id="plan-result">尚未生成</pre><div id="design-pick"></div></section>
+<section class="step"><h3>② 正式与备用名单</h3>
+<form id="draw-form"><label>抽签种子<input type="number" name="seed" value="17" required></label>
+<button type="submit">按选中设计抽签</button></form>
+<pre id="draw-result">请先在①中选择可行设计</pre></section>
+<section class="step"><h3>③ 现场回执与替补</h3>
+<form id="receipt-form"><label>抽签批次<select name="draw_id"></select></label>
+<label>学生<select name="student"></select></label>
+<label>现场状态<select name="status">
+<option value="responded">responded（已访谈）</option>
+<option value="refused">refused（拒访）</option>
+<option value="absent">absent（缺席）</option>
+<option value="out_of_frame">out_of_frame（不在抽样框）</option>
+</select></label><button type="submit">提交回执</button></form>
+<button id="substitute-button" type="button">对选中缺席/拒访者启用同层替补</button>
+<pre id="field-result">等待回执</pre></section>
+<section class="step"><h3>④ 当前估计依据</h3>
+<button id="estimate-button" type="button">沿原设计估计</button>
+<pre id="estimate-result">等待估计</pre></section>
+<section class="step"><h3>⑤ 抽签历史</h3><div id="draws-list">暂无抽签批次</div></section>
+</div></section>
 <div class="columns"><section><h2>按现行规则抽签</h2><form id="action-form"></form><pre id="result">选择记录后操作</pre>
 <aside>当前页面保留原始描述与业务记录，具体统计含义见分析约定。</aside></section>
 <section><h2>工作批注</h2><form id="note-form"><textarea id="note" required maxlength="2000" aria-label="批注内容"></textarea><button>保存批注</button></form><ul id="notes"></ul></section></div>

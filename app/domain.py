@@ -1,6 +1,8 @@
 from collections import Counter
 import random
 
+from . import design
+
 
 def frame_members(data):
     members = {}
@@ -27,7 +29,9 @@ def baseline(data):
             'dispositions': dict(Counter(row['status'] for row in data['dispositions']))}
 
 
-def act(data, request):
+def act(data, request, log=None):
+    if request.get('operation') in design.OPERATIONS:
+        return design.handle(data, request, log)
     if request.get('operation') != 'draw':
         raise ValueError('未知抽签操作')
     members = sorted(row['student'] for row in frame_members(data).values() if row['eligibility'])

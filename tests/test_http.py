@@ -66,6 +66,90 @@ class HttpContractTests(unittest.TestCase):
                 self.assertEqual(response.status, 200)
                 self.assertTrue(response.read())
 
+    def plan(self, limits):
+        status, result = self.request('/api/action', {'operation': 'plan', 'limits': limits})
+        self.assertEqual(status, 200)
+        return result
+
+    def draw(self, spec, seed=9):
+        status, result = self.request('/api/action',
+                                      {'operation': 'draw_v2', 'design': spec, 'seed': seed})
+        self.assertEqual(status, 200)
+        return result
+
+    def test_design_to_estimate_over_http(self):
+        plan = self.plan({'minutes': 300, 'minimum_rare_major': 2})
+        self.assertTrue(plan['feasible'])
+        draw = self.draw(plan['designs'][0]['spec'])
+        draw_id = draw['draw_id']
+        main = draw['main']
+        reserves = {item['class_id']: item['queue'] for item in draw['reserves']}
+        status, receipt = self.request('/api/action', {
+            'operation': 'receipt', 'draw_id': draw_id,
+            'student': main[0]['student'], 'status': 'responded'})
+        self.assertEqual(status, 200)
+        self.assertEqual(receipt['field']['responded'], 1)
+        target = next(entry for entry in main[1:]
+                      if entry['cell'] == 'other' and reserves[entry['class_id']])
+        self.request('/api/action', {'operation': 'receipt', 'draw_id': draw_id,
+                                     'student': target['student'], 'status': 'refused'})
+        status, substitution = self.request('/api/action', {
+            'operation': 'substitute', 'draw_id': draw_id, 'original': target['student']})
+        self.assertEqual(status, 200)
+        self.assertEqual(substitution['substitution']['replacement'],
+                         reserves[target['class_id']][0])
+        self.assertIn('不再等于原概率样本', substitution['probability_note'])
+        status, estimate = self.request('/api/action',
+                                        {'operation': 'estimate', 'draw_id': draw_id})
+        self.assertEqual(status, 200)
+        self.assertIsNotNone(estimate['design_based']['ht_total'])
+        self.assertTrue(estimate['substitution_view'])
+        self.assertEqual(estimate['chain']['seed'], 9)
+        status, draws = self.request('/api/action', {'operation': 'draws'})
+        self.assertEqual([item['draw_id'] for item in draws['draws']], [draw_id])
+        status, detail = self.request('/api/action',
+                                      {'operation': 'draw_detail', 'draw_id': draw_id})
+        self.assertEqual(detail['main'], main)
+
+    def test_plan_infeasible_returns_conflicts_not_list(self):
+        result = self.plan({'minutes': 1, 'minimum_rare_major': 2})
+        self.assertFalse(result['feasible'])
+        self.assertNotIn('designs', result)
+        self.assertTrue(any(c['constraint'] == 'minutes' for c in result['conflicts']))
+
+    def test_field_event_errors_are_client_errors(self):
+        plan = self.plan({'minutes': 300, 'minimum_rare_major': 2})
+        draw = self.draw(plan['designs'][0]['spec'])
+        draw_id = draw['draw_id']
+        main = draw['main']
+        for payload in (
+                {'operation': 'estimate', 'draw_id': 'dr-000000000000'},
+                {'operation': 'receipt', 'draw_id': draw_id, 'student': 's-999',
+                 'status': 'responded'},
+                {'operation': 'receipt', 'draw_id': draw_id, 'student': main[0]['student'],
+                 'status': 'unknown'},
+                {'operation': 'substitute', 'draw_id': draw_id,
+                 'original': main[0]['student']},
+                {'operation': 'draw_v2', 'design': plan['designs'][0]['spec'], 'seed': 'x'},
+                {'operation': 'draw_v2', 'design': {'strata': []}, 'seed': 1},
+        ):
+            with self.assertRaises(HTTPError) as caught:
+                self.request('/api/action', payload)
+            self.assertEqual(caught.exception.code, 400)
+            caught.exception.close()
+        self.request('/api/action', {'operation': 'receipt', 'draw_id': draw_id,
+                                     'student': main[0]['student'], 'status': 'out_of_frame'})
+        with self.assertRaises(HTTPError) as caught:
+            self.request('/api/action', {'operation': 'substitute', 'draw_id': draw_id,
+                                         'original': main[0]['student']})
+        self.assertEqual(caught.exception.code, 400)
+        caught.exception.close()
+        with self.assertRaises(HTTPError) as caught:
+            self.request('/api/action', {'operation': 'receipt', 'draw_id': draw_id,
+                                         'student': main[0]['student'], 'status': 'refused'})
+        self.assertEqual(caught.exception.code, 400)
+        caught.exception.close()
+
 
 if __name__ == '__main__':
     unittest.main()

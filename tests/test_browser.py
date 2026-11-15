@@ -60,6 +60,71 @@ class BrowserContractTests(unittest.TestCase):
             finally:
                 browser.close()
 
+    def act(self, payload):
+        request = Request(self.base + '/api/action', json.dumps(payload).encode(),
+                          {'Content-Type': 'application/json'})
+        with urlopen(request, timeout=10) as response:
+            return json.load(response)
+
+    def test_design_to_estimate_workflow_in_real_browser(self):
+        with sync_playwright() as playwright:
+            browser = playwright.chromium.launch(args=['--no-sandbox'] if os.geteuid() == 0 else [])
+            try:
+                page = browser.new_page()
+                page.set_default_timeout(15000)
+                errors = []
+                page.on('pageerror', lambda error: errors.append(str(error)))
+                page.goto(self.base, wait_until='networkidle')
+                page.wait_for_function("document.querySelector('#summary').textContent !== '载入中'")
+                page.fill('#plan-form input[name=minutes]', '300')
+                page.fill('#plan-form input[name=minimum_rare_major]', '2')
+                page.locator('#plan-form button').click()
+                page.wait_for_function("document.querySelector('#plan-result').textContent !== '尚未生成'")
+                plan = json.loads(page.locator('#plan-result').inner_text())
+                self.assertTrue(plan['feasible'])
+                self.assertTrue(plan['designs'])
+                page.locator('#design-pick input[type=radio]').first.check()
+                page.fill('#draw-form input[name=seed]', '23')
+                page.locator('#draw-form button').click()
+                page.wait_for_function(
+                    "document.querySelector('#draw-result').textContent.includes('draw_id')")
+                draw = json.loads(page.locator('#draw-result').inner_text())
+                draw_id = draw['draw_id']
+                main = draw['main']
+                reserves = {item['class_id']: item['queue'] for item in draw['reserves']}
+                page.wait_for_function(
+                    "document.querySelectorAll('#receipt-form select[name=student] option').length > 0")
+                page.select_option('#receipt-form select[name=draw_id]', draw_id)
+                page.select_option('#receipt-form select[name=student]', main[0]['student'])
+                page.select_option('#receipt-form select[name=status]', 'responded')
+                page.locator('#receipt-form button').click()
+                page.wait_for_function(
+                    "document.querySelector('#field-result').textContent.includes('\"responded\": 1')")
+                target = next(entry for entry in main[1:]
+                              if entry['cell'] == 'other' and reserves[entry['class_id']])
+                page.select_option('#receipt-form select[name=student]', target['student'])
+                page.select_option('#receipt-form select[name=status]', 'refused')
+                page.locator('#receipt-form button').click()
+                page.wait_for_function(
+                    "document.querySelector('#field-result').textContent.includes('\"refused\": 1')")
+                page.locator('#substitute-button').click()
+                page.wait_for_function(
+                    "document.querySelector('#field-result').textContent.includes('substitution')")
+                page.locator('#estimate-button').click()
+                page.wait_for_function(
+                    "document.querySelector('#estimate-result').textContent.includes('design_based')")
+                shown = json.loads(page.locator('#estimate-result').inner_text())
+                expected = self.act({'operation': 'estimate', 'draw_id': draw_id})
+                self.assertEqual(shown, expected)
+                self.assertIsNotNone(shown['design_based']['ht_total'])
+                self.assertTrue(shown['substitution_view'])
+                self.assertIn('不是原设计的概率样本',
+                              shown['substitution_view']['probability_basis'])
+                self.assertIn(draw_id, page.locator('#draws-list').inner_text())
+                self.assertEqual(errors, [])
+            finally:
+                browser.close()
+
 
 if __name__ == '__main__':
     unittest.main()

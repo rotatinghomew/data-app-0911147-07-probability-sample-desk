@@ -8,6 +8,7 @@ import os
 import threading
 
 from . import domain
+from .drawlog import DrawLog
 from .storage import NoteStore
 
 
@@ -21,7 +22,9 @@ def load_study(path=None):
 
 def create_server(host='127.0.0.1', port=0, data=None, state_dir=None):
     dataset = copy.deepcopy(load_study() if data is None else data)
-    notes = NoteStore(Path(state_dir or os.environ.get('APP_STATE_DIR', ROOT / '.local')))
+    state = Path(state_dir or os.environ.get('APP_STATE_DIR', ROOT / '.local'))
+    notes = NoteStore(state)
+    draws = DrawLog(state)
 
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, format_string, *arguments):
@@ -71,7 +74,7 @@ def create_server(host='127.0.0.1', port=0, data=None, state_dir=None):
                 if not isinstance(payload, dict):
                     raise ValueError('请求应为对象')
                 if route == '/api/action':
-                    result = domain.act(dataset, payload)
+                    result = domain.act(dataset, payload, log=draws)
                     self.reply(200, result)
                 else:
                     self.reply(201, notes.append(payload.get('text'), payload.get('selection', {})))
